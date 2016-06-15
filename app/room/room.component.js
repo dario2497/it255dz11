@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/Rx',
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, common_1, http_1, router_1;
-    var FormComponent2;
+    var RoomComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -28,49 +28,49 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/Rx',
                 router_1 = router_1_1;
             }],
         execute: function() {
-            FormComponent2 = (function () {
-                function FormComponent2(builder, http, router) {
+            RoomComponent = (function () {
+                function RoomComponent(builder, http, router) {
                     this.select = 1;
                     this.http = http;
                     this.router = router;
                     this.registerForm = builder.group({
-                        roomName: ["", common_1.Validators.none],
-                        size: ["", common_1.Validators.none],
-                        beds: ["", common_1.Validators.none],
+                        naziv: ["", common_1.Validators.none],
+                        broj_kreveta: ["", common_1.Validators.none],
+                        broj_kvadrata: ["", common_1.Validators.none],
                     });
                 }
-                FormComponent2.prototype.onAddRoom = function () {
+                RoomComponent.prototype.onAddRoom = function () {
                     var _this = this;
-                    var data = "roomName=" + this.registerForm.value.roomName +
-                        "&size=" + this.registerForm.value.size +
-                        "&beds=" + this.registerForm.value.beds;
+                    var data = "naziv=" + this.registerForm.value.naziv +
+                        "&broj_kreveta=" + this.registerForm.value.broj_kreveta +
+                        "&broj_kvadrata=" + this.registerForm.value.broj_kvadrata;
                     var headers = new http_1.Headers();
                     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                    this.http.post('http://localhost/php/addroomservice.php', data, { headers: headers })
+                    this.http.post('http://localhost/php/addroom.php', data, { headers: headers })
                         .map(function (res) { return res; })
                         .subscribe(function (data) { return _this.postResponse = data; }, function (err) { return alert(JSON.stringify(err)); }, function () {
                         if (_this.postResponse._body.indexOf("error") === -1) {
-                            alert("Uspesno dodavanje sobe");
-                            _this.router.parent.navigate(['./MainPage']);
+                            alert("Dodali ste sobu");
+                            _this.router.parent.navigate(['./Home']);
                         }
                         else {
-                            alert("Neuspesno dodavanje sobe");
+                            alert("Greska! Niste dodali sobu");
                         }
                     });
                 };
-                FormComponent2 = __decorate([
+                RoomComponent = __decorate([
                     core_1.Component({
-                        selector: 'FormPage2',
-                        templateUrl: 'app/form2/form2.html',
+                        selector: 'Room',
+                        templateUrl: 'app/room/room.html',
                         directives: [common_1.FORM_DIRECTIVES],
                         viewBindings: [common_1.FORM_BINDINGS]
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder, http_1.Http, router_1.Router])
-                ], FormComponent2);
-                return FormComponent2;
+                ], RoomComponent);
+                return RoomComponent;
             }());
-            exports_1("FormComponent2", FormComponent2);
+            exports_1("RoomComponent", RoomComponent);
         }
     }
 });
-//# sourceMappingURL=form2.component.js.map
+//# sourceMappingURL=room.component.js.map

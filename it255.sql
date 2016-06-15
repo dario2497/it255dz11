@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2016 at 06:45 PM
+-- Generation Time: Jun 15, 2016 at 11:25 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -17,51 +17,50 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hotel`
+-- Database: `it255`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rooms`
+-- Table structure for table `korisnici`
 --
 
-CREATE TABLE `rooms` (
+CREATE TABLE `korisnici` (
   `id` int(11) NOT NULL,
-  `roomname` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `size` int(11) DEFAULT NULL,
-  `beds` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `ime` varchar(30) NOT NULL,
+  `prezime` varchar(30) NOT NULL,
+  `korisnicko_ime` varchar(30) NOT NULL,
+  `sifra` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `sobe`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `sobe` (
   `id` int(11) NOT NULL,
-  `firstname` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `lastname` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `username` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `password` varchar(128) COLLATE utf8_bin DEFAULT NULL,
-  `token` varchar(128) COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `naziv` varchar(30) NOT NULL,
+  `broj_kreveta` int(11) NOT NULL,
+  `broj_kvadrata` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `rooms`
+-- Indexes for table `korisnici`
 --
-ALTER TABLE `rooms`
+ALTER TABLE `korisnici`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `sobe`
 --
-ALTER TABLE `users`
+ALTER TABLE `sobe`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -69,15 +68,15 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `rooms`
+-- AUTO_INCREMENT for table `korisnici`
 --
-ALTER TABLE `rooms`
+ALTER TABLE `korisnici`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `sobe`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sobe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

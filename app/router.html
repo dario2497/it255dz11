@@ -1,5 +1,5 @@
       <div class="brand">
-         MetHotel
+         <h1>MetHotel</h1>
       </div>
       <nav class="navbar navbar-default">
          <div class="container-fluid">
@@ -11,18 +11,14 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" [routerLink]="['./MainPage']">MetHotel</a>
+               <a class="navbar-brand" [routerLink]="['./Home']">MetHotel</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
-                  <li [class.active]="router.isRouteActive(router.generate(['/MainPage']))"><a [routerLink]="['./MainPage']">Home <span class="sr-only">(current)</span></a></li>
-                  <li [class.active]="router.isRouteActive(router.generate(['/Gallery']))"><a [routerLink]="['./Gallery']">Gallery</a></li>
-			      <li *ngIf="isAuth == 'no'" [class.active]="router.isRouteActive(router.generate(['/RegisterPage']))"><a [routerLink]="['./RegisterPage']">Register</a></li>  
-				  <li *ngIf="isAuth == 'no'" [class.active]="router.isRouteActive(router.generate(['/LoginPage']))"><a [routerLink]="['./LoginPage']">Login</a></li>
-				  <li [class.active]="router.isRouteActive(router.generate(['/FormPage2']))"><a [routerLink]="['./FormPage2']">Add room</a></li>
-				  <li *ngIf="isAuth == 'yes'" [class.active]="router.isRouteActive(router.generate(['/AllRoomsPage']))"><a [routerLink]="['./AllRoomsPage']">All Rooms</a></li>
-				  <li *ngIf="isAuth == 'yes'" ><a (click)="onLogout()">Logout</a></li>
+                 <li><a [routerLink]="['./Home']">Home</a></li>
+                  <li ><a [routerLink]="['./Gallery']">Gallery</a></li>
+                  <li><a [routerLink]="['./Room']">Room</a></li>
                </ul>
             </div>
             <!-- /.navbar-collapse -->
