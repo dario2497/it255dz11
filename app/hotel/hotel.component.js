@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/Rx',
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, common_1, http_1, router_1;
-    var RoomComponent;
+    var HotelComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -28,49 +28,49 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/Rx',
                 router_1 = router_1_1;
             }],
         execute: function() {
-            RoomComponent = (function () {
-                function RoomComponent(builder, http, router) {
+            HotelComponent = (function () {
+                function HotelComponent(builder, http, router) {
                     this.select = 1;
                     this.http = http;
                     this.router = router;
-                    this.roomForm = builder.group({
+                    this.hotelForm = builder.group({
                         naziv: ["", common_1.Validators.none],
-                        broj_kreveta: ["", common_1.Validators.none],
-                        broj_kvadrata: ["", common_1.Validators.none],
+                        adresa: ["", common_1.Validators.none],
+                        broj_soba: ["", common_1.Validators.none],
                     });
                 }
-                RoomComponent.prototype.onAddRoom = function () {
+                HotelComponent.prototype.onAddHotel = function () {
                     var _this = this;
-                    var data = "naziv=" + this.roomForm.value.naziv +
-                        "&broj_kreveta=" + this.roomForm.value.broj_kreveta +
-                        "&broj_kvadrata=" + this.roomForm.value.broj_kvadrata;
+                    var data = "naziv=" + this.hotelForm.value.naziv +
+                        "&adresa=" + this.hotelForm.value.adresa +
+                        "&broj_soba=" + this.hotelForm.value.broj_soba;
                     var headers = new http_1.Headers();
                     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                    this.http.post('http://localhost/php/addroom.php', data, { headers: headers })
+                    this.http.post('http://localhost/php/addhotel.php', data, { headers: headers })
                         .map(function (res) { return res; })
                         .subscribe(function (data) { return _this.postResponse = data; }, function (err) { return alert(JSON.stringify(err)); }, function () {
                         if (_this.postResponse._body.indexOf("error") === -1) {
-                            alert("Dodali ste sobu");
+                            alert("Dodali ste hotel");
                             _this.router.parent.navigate(['./Home']);
                         }
                         else {
-                            alert("Greska! Niste dodali sobu");
+                            alert("Greska! Niste dodali hotel");
                         }
                     });
                 };
-                RoomComponent = __decorate([
+                HotelComponent = __decorate([
                     core_1.Component({
-                        selector: 'Room',
-                        templateUrl: 'app/room/room.html',
+                        selector: 'Hotel',
+                        templateUrl: 'app/hotel/hotel.html',
                         directives: [common_1.FORM_DIRECTIVES],
                         viewBindings: [common_1.FORM_BINDINGS]
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder, http_1.Http, router_1.Router])
-                ], RoomComponent);
-                return RoomComponent;
+                ], HotelComponent);
+                return HotelComponent;
             }());
-            exports_1("RoomComponent", RoomComponent);
+            exports_1("HotelComponent", HotelComponent);
         }
     }
 });
-//# sourceMappingURL=room.component.js.map
+//# sourceMappingURL=hotel.component.js.map

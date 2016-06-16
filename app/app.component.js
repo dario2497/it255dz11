@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'app/home/home.component', 'app/gallery/gallery.component', 'app/room/room.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'app/home/home.component', 'app/gallery/gallery.component', 'app/room/room.component', 'app/hotel/hotel.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'app/home/home.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, home_component_1, gallery_component_1, room_component_1;
+    var core_1, router_1, home_component_1, gallery_component_1, room_component_1, hotel_component_1;
     var AppComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/core', 'angular2/router', 'app/home/home.component', 
             },
             function (room_component_1_1) {
                 room_component_1 = room_component_1_1;
+            },
+            function (hotel_component_1_1) {
+                hotel_component_1 = hotel_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -43,6 +46,7 @@ System.register(['angular2/core', 'angular2/router', 'app/home/home.component', 
                         { path: '/', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
                         { path: '/gallery', name: 'Gallery', component: gallery_component_1.GalleryComponent },
                         { path: '/room', name: 'Room', component: room_component_1.RoomComponent },
+                        { path: '/hotel', name: 'Hotel', component: hotel_component_1.HotelComponent },
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

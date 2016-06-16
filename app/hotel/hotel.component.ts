@@ -5,15 +5,15 @@ import 'rxjs/Rx';
 import {Router, ROUTER_PROVIDERS} from 'angular2/router'
 
 @Component({ 
-  selector: 'Room', 
-  templateUrl: 'app/room/room.html',
+  selector: 'Hotel', 
+  templateUrl: 'app/hotel/hotel.html',
   directives: [FORM_DIRECTIVES],
   viewBindings: [FORM_BINDINGS]
 })
 
-export class RoomComponent { 
+export class HotelComponent { 
 
-  roomForm: ControlGroup;
+  hotelForm: ControlGroup;
   http: Http;
   router: Router;
   postResponse: String;
@@ -22,29 +22,29 @@ export class RoomComponent {
   constructor(builder: FormBuilder, http: Http,  router: Router) {
 	this.http = http;
 	this.router = router;
-    this.roomForm = builder.group({
+    this.hotelForm = builder.group({
      naziv: ["", Validators.none],
-     broj_kreveta: ["", Validators.none],
-     broj_kvadrata: ["", Validators.none],
+     adresa: ["", Validators.none],
+     broj_soba: ["", Validators.none],
    });
   }
   
-  onAddRoom(): void {
-	var data = "naziv="+this.roomForm.value.naziv+
-              "&broj_kreveta="+this.roomForm.value.broj_kreveta+
-              "&broj_kvadrata="+this.roomForm.value.broj_kvadrata;
+  onAddHotel(): void {
+	var data = "naziv="+this.hotelForm.value.naziv+
+              "&adresa="+this.hotelForm.value.adresa+
+              "&broj_soba="+this.hotelForm.value.broj_soba;
 	var headers = new Headers();
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
-	this.http.post('http://localhost/php/addroom.php',data, {headers:headers})
+	this.http.post('http://localhost/php/addhotel.php',data, {headers:headers})
     .map(res => res)
     .subscribe( data => this.postResponse = data,
 	err => alert(JSON.stringify(err)),
 	() => { 
 	if(this.postResponse._body.indexOf("error") === -1){
-		alert("Dodali ste sobu");
+		alert("Dodali ste hotel");
 	    this.router.parent.navigate(['./Home']);
 	 }else{
-		alert("Greska! Niste dodali sobu");
+		alert("Greska! Niste dodali hotel");
 	 }
 	 }
 	);
